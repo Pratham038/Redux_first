@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useSelector,useDispatch } from "react-redux";
+import {incNumber,decNumber } from "./actions/index"
 function App() {
+
+const myState = useSelector((state) =>state.changeTheNumber)
+const dispatch = useDispatch();
+
+const pok = {display:"flex",
+justifyContent:"center",
+alignItems:"center",
+height:"100vh"
+}
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+   <>
+   <div className="outer" style={pok}>
+    <div className="inner">
+      <button onClick={ () => dispatch(incNumber())} className="inc">+</button>
+      <input type="text" value={myState} contentEditable="false" />
+      <button className="dec" onClick={ () => dispatch(decNumber())}>-</button>
+
     </div>
+   </div>
+   </>
   );
 }
 
