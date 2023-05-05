@@ -6,6 +6,10 @@ switch (action.type) {
     
     case "DECREMENT": return state -2 ;
 
+    case "MULTIPLY": return state *2;
+
+    case "DIVIDE": return state /2;
+
     default:
         return state ;
 }
